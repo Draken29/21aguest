@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input type="email" required oninvalid="hello(this)"  oninput="hello(this)"/>
+        <input type="text" required oninvalid="hello1(this)" oninput="hello1(this)"/>
+        <select name="language" oninvalid="this.setCustomValidity('try agine')" required>
+            <option value=""></option>
+          <option name="english">english</option>
+          <option name="arabic">arabic</option>
+        </select>
+        <button type="submit">تسحيل</button> 
+    </form>
+    <script>
+        function hello(input){
+            if(input.value==''){
+                input.setCustomValidity('صحح ما كتبته');
+            }
+            else if(input.validity.typeMismatch){
+                input.setCustomValidity('اعد كتابة الرسالة');
+            }
+            else{
+                input.setCustomValidity('');
+            }
+            return true;
+        }
+        function hello1(input){
+            if(input.value==''){
+                input.setCustomValidity('هذا خطاء اعد كتابة مرة اخرى');
+            }
+            else if(input.validity.typeMismatch){
+                input.setCustomValidity('خطاء اعد ');
+            }
+            else{
+                input.setCustomValidity('');
+            }
+            return true;
+        }
+       </script>
+</body>
+</html>
